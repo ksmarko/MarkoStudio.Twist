@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "MarkoStudio.Twist": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:5001/swagger/index.html",
+      //"launchUrl": "https://localhost:5001", // angular UI
+      "applicationUrl": "https://localhost:5001",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
