@@ -26,7 +26,7 @@ namespace MarkoStudio.Twist
                         .AddJsonFile($"appsettings.Secrets.json", true, reloadOnChange: false)
                         .AddJsonFile($"appsettings.Api.json", true, reloadOnChange: false)
                         .AddJsonFile($"appsettings.Api.{env.EnvironmentName}.json", true, reloadOnChange: false)
-                        .AddParameterStoreConfig(Configuration.GetParameterStoreParams())
+                        .AddParameterStoreConfig(Configuration.GetRequiredParams())
                         .AddEnvironmentVariables();
                 })
                 .UseStartup<Startup>();

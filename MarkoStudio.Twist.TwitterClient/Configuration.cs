@@ -6,7 +6,7 @@ namespace MarkoStudio.Twist.TwitterApi
 {
     public static class Configuration
     {
-        public static List<string> GetParameterStoreParams()
+        public static List<string> GetRequiredParams()
         {
             return new List<string>
             {
