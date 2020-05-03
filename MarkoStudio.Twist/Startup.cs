@@ -63,16 +63,9 @@ namespace MarkoStudio.Twist
 
             services.AddRouting(opts => opts.LowercaseUrls = true);
 
-            services.AddOptions<TwitterAuthOptions>()
-                .Configure(options =>
-                {
-                    options.ConsumerKey = _configuration.GetSection("Twist_Twitter_ConsumerKey").Value;
-                    options.ConsumerSecret = _configuration.GetSection("Twist_Twitter_ConsumerSecret").Value;
-                })
-                .Validate(options => !string.IsNullOrWhiteSpace(options.ConsumerKey) &&
-                                     !string.IsNullOrWhiteSpace(options.ConsumerSecret));
+            // Configure application here
 
-            services.AddScoped<ITwitterClient, TwitterClient>();
+            services.ConfigureTwitterClientServices(_configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

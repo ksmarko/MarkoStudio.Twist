@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Comprehend" Version="3.3.108.51" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarkoStudio.Twist.Common\MarkoStudio.Twist.Common.csproj" />
+  </ItemGroup>
+
+</Project>
