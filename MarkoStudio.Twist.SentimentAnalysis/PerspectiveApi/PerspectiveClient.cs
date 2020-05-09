@@ -1,12 +1,10 @@
-﻿using System;
-using MarkoStudio.Twist.Common.Http;
+﻿using MarkoStudio.Twist.Common.Http;
+using MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi.Models;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi.Models;
 
 namespace MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi
 {
@@ -18,14 +16,12 @@ namespace MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi
     public class PerspectiveClient : IPerspectiveClient
     {
         private readonly HttpClient _httpClient;
-        private readonly JsonSerializer _serializer; //todo: remove if no need to lowercase request
 
         private readonly PerspectiveApiOptions _perspectiveApiOptions;
 
         public PerspectiveClient(IOptions<PerspectiveApiOptions> options)
         {
             _httpClient = new HttpClient();
-            _serializer = JsonSerializer.CreateDefault();
 
             _perspectiveApiOptions = options.Value;
         }
@@ -45,7 +41,8 @@ namespace MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi
                     {KnownPerspectiveAnalysisAttributes.Toxicity, new object()},
                     {KnownPerspectiveAnalysisAttributes.IdentityAttack, new object()},
                     {KnownPerspectiveAnalysisAttributes.SexuallyExplicit, new object()},
-                }
+                },
+                Languages = new [] {"en"}
             };
 
             var analyzeResponse = await _httpClient.Post<AnalyzeResponse>(url, analyzeRequest);

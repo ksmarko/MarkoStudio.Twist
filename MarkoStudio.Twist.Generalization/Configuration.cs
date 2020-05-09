@@ -1,10 +1,10 @@
 ﻿using Google.Apis.Services;
 using Google.Apis.Translate.v2;
 using Google.Cloud.Translation.V2;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MarkoStudio.Twist.Generalization
 {
@@ -32,6 +32,8 @@ namespace MarkoStudio.Twist.Generalization
 
                 return client;
             });
+
+            services.AddSingleton<IGeneralizationService, GeneralizationService>();
         }
     }
 }

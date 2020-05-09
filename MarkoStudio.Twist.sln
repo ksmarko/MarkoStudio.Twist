@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.TwitterCl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Common", "MarkoStudio.Twist.Common\MarkoStudio.Twist.Common.csproj", "{6F3A8447-141F-4263-B3B5-89F469810E19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkoStudio.Twist.SentimentAnalysis", "MarkoStudio.Twist.SentimentAnalysis\MarkoStudio.Twist.SentimentAnalysis.csproj", "{1CCD7517-81ED-4691-ABAA-F5F71834FA19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.SentimentAnalysis", "MarkoStudio.Twist.SentimentAnalysis\MarkoStudio.Twist.SentimentAnalysis.csproj", "{1CCD7517-81ED-4691-ABAA-F5F71834FA19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkoStudio.Twist.Generalization", "MarkoStudio.Twist.Generalization\MarkoStudio.Twist.Generalization.csproj", "{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Generalization", "MarkoStudio.Twist.Generalization\MarkoStudio.Twist.Generalization.csproj", "{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Application", "MarkoStudio.Twist.Application\MarkoStudio.Twist.Application.csproj", "{2A66812F-164E-488A-AD36-6C5076EEB679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkoStudio.Twist.Client", "MarkoStudio.Twist.Client\MarkoStudio.Twist.Client.csproj", "{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A66812F-164E-488A-AD36-6C5076EEB679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A66812F-164E-488A-AD36-6C5076EEB679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A66812F-164E-488A-AD36-6C5076EEB679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A66812F-164E-488A-AD36-6C5076EEB679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

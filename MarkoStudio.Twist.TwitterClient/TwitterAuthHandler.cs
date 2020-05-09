@@ -4,8 +4,9 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using MarkoStudio.Twist.TwitterClient;
 
-namespace MarkoStudio.Twist.TwitterApi
+namespace MarkoStudio.Twist.TwitterClient
 {
     internal class TwitterAuthHandler : DelegatingHandler
     {

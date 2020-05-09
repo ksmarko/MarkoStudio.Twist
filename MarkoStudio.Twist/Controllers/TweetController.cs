@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using MarkoStudio.Twist.TwitterApi;
-using MarkoStudio.Twist.TwitterApi.Entities;
+﻿using MarkoStudio.Twist.TwitterClient;
+using MarkoStudio.Twist.TwitterClient.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MarkoStudio.Twist.Controllers
 {
@@ -10,17 +10,17 @@ namespace MarkoStudio.Twist.Controllers
     [Route("api/tweets")]
     public class TweetController : ControllerBase
     {
-        private readonly ITwitterClient _client;
+        private readonly ITwitterAdapter _adapter;
 
-        public TweetController(ITwitterClient client)
+        public TweetController(ITwitterAdapter adapter)
         {
-            _client = client;
+            _adapter = adapter;
         }
 
         [HttpGet("/user/{userName}")]
-        public async Task<List<Tweet>> GetTweets(string userName)
+        public async Task<IEnumerable<TweetResponse>> GetTweets(string userName)
         {
-            return await _client.GetAllTweets(userName);
+            return await _adapter.GetAllTweets(userName);
         }
     }
 }

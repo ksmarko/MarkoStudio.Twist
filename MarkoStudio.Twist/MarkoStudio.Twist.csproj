@@ -25,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MarkoStudio.Twist.Common\MarkoStudio.Twist.Common.csproj" />
+    <ProjectReference Include="..\MarkoStudio.Twist.Application\MarkoStudio.Twist.Application.csproj" />
+    <ProjectReference Include="..\MarkoStudio.Twist.Client\MarkoStudio.Twist.Client.csproj" />
     <ProjectReference Include="..\MarkoStudio.Twist.TwitterClient\MarkoStudio.Twist.TwitterClient.csproj" />
   </ItemGroup>
 

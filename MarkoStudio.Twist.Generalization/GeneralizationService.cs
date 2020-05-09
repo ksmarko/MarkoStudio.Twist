@@ -1,5 +1,6 @@
-﻿using System;
-using Google.Cloud.Translation.V2;
+﻿using Google.Cloud.Translation.V2;
+using MarkoStudio.Twist.Generalization.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -37,14 +38,5 @@ namespace MarkoStudio.Twist.Generalization
 
             return result;
         }
-    }
-
-    public class GeneralizationResponse
-    {
-        public string OriginId { get; set; }
-
-        public string Origin { get; set; }
-
-        public string Unified { get; set; }
     }
 }

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarkoStudio.Twist.Generalization\MarkoStudio.Twist.Generalization.csproj" />
+    <ProjectReference Include="..\MarkoStudio.Twist.SentimentAnalysis\MarkoStudio.Twist.SentimentAnalysis.csproj" />
+    <ProjectReference Include="..\MarkoStudio.Twist.TwitterClient\MarkoStudio.Twist.TwitterClient.csproj" />
+  </ItemGroup>
+
+</Project>

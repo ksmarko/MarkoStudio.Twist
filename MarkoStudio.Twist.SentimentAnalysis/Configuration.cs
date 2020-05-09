@@ -1,9 +1,9 @@
-﻿using System;
-using Amazon;
+﻿using Amazon;
 using Amazon.Comprehend;
 using MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 
 namespace MarkoStudio.Twist.SentimentAnalysis
@@ -45,6 +45,8 @@ namespace MarkoStudio.Twist.SentimentAnalysis
                 {
                     options.ApiKey = perspectiveApiKey;
                 });
+
+            services.AddScoped<ISentimentService, SentimentService>();
         }
     }
 }

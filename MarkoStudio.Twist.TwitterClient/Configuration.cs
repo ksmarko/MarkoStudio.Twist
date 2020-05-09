@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
-namespace MarkoStudio.Twist.TwitterApi
+namespace MarkoStudio.Twist.TwitterClient
 {
     public static class Configuration
     {
@@ -27,7 +27,7 @@ namespace MarkoStudio.Twist.TwitterApi
                     options.ConsumerSecret = consumerSecret;
                 });
 
-            services.AddSingleton<ITwitterClient, TwitterClient>();
+            services.AddSingleton<ITwitterAdapter, TwitterAdapter>();
         }
     }
 }

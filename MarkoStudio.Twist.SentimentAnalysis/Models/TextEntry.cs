@@ -1,4 +1,4 @@
-﻿namespace MarkoStudio.Twist.SentimentAnalysis.Entities
+﻿namespace MarkoStudio.Twist.SentimentAnalysis.Models
 {
     public class TextEntry
     {

@@ -1,4 +1,3 @@
-using MarkoStudio.Twist.TwitterApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -11,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.IO.Compression;
+using MarkoStudio.Twist.Application;
 
 namespace MarkoStudio.Twist
 {
@@ -63,9 +63,9 @@ namespace MarkoStudio.Twist
 
             services.AddRouting(opts => opts.LowercaseUrls = true);
 
-            // Configure application here
+            // ========================== Configure application here ==================================================
 
-            services.ConfigureTwitterClientServices(_configuration);
+            services.AddApplicationServices(_configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

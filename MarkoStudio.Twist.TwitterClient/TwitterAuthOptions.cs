@@ -1,4 +1,4 @@
-﻿namespace MarkoStudio.Twist.TwitterApi
+﻿namespace MarkoStudio.Twist.TwitterClient
 {
     public class TwitterAuthOptions
     {

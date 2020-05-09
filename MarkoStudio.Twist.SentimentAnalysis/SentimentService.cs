@@ -1,6 +1,6 @@
 ﻿using Amazon.Comprehend;
 using Amazon.Comprehend.Model;
-using MarkoStudio.Twist.SentimentAnalysis.Entities;
+using MarkoStudio.Twist.SentimentAnalysis.Models;
 using MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi;
 using MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi.Models;
 using System.Collections.Generic;
@@ -9,7 +9,14 @@ using System.Threading.Tasks;
 
 namespace MarkoStudio.Twist.SentimentAnalysis
 {
-    public class SentimentService
+    public interface ISentimentService
+    {
+        Task<IEnumerable<TextSentiment>> DetectPositiveSentiments(IEnumerable<TextEntry> entries);
+
+        Task<IEnumerable<TextToxicity>> DetectToxicSentiments(IEnumerable<TextEntry> entries);
+    }
+
+    public class SentimentService : ISentimentService
     {
         private readonly IAmazonComprehend _amazonComprehendClient;
         private readonly IPerspectiveClient _perspectiveClient;
@@ -33,7 +40,7 @@ namespace MarkoStudio.Twist.SentimentAnalysis
                 OriginId = entry.OriginId,
                 Text = entry.Text,
                 SentimentType = result.Sentiment.Value,
-                SentimentScore = result.SentimentScore,
+                SentimentScore = result.SentimentScore.GetScore(),
                 SentimentIndex = result.Index
             }).ToList();
         }
@@ -60,6 +67,22 @@ namespace MarkoStudio.Twist.SentimentAnalysis
             }
 
             return resultList;
+        }
+    }
+
+    public static class SentimentScoreExtensions
+    {
+        public static Dictionary<string, double> GetScore(this SentimentScore sentimentScore)
+        {
+            var map = new Dictionary<string, double>
+            {
+                {KnownSentiment.Positive, sentimentScore.Positive},
+                {KnownSentiment.Negative, sentimentScore.Negative},
+                {KnownSentiment.Mixed, sentimentScore.Mixed},
+                {KnownSentiment.Neutral, sentimentScore.Neutral}
+            };
+
+            return map;
         }
     }
 }

@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MarkoStudio.Twist.SentimentAnalysis.PerspectiveApi.Models
 {
     internal class AnalyzeRequest
     {
+        [JsonProperty("comment")]
         public AnalyzeComment Comment { get; set; }
 
+        [JsonProperty("requestedAttributes")]
         public Dictionary<string, object> RequestedAttributes { get; set; }
+
+        [JsonProperty("languages")]
+        public string[] Languages { get; set; }
     }
 
     internal class AnalyzeComment
     {
+        [JsonProperty("text")]
         public string Text { get; set; }
     }
 

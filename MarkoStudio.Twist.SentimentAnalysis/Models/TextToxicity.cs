@@ -1,4 +1,4 @@
-﻿namespace MarkoStudio.Twist.SentimentAnalysis.Entities
+﻿namespace MarkoStudio.Twist.SentimentAnalysis.Models
 {
     public class TextToxicity
     {
@@ -6,6 +6,6 @@
 
         public string Text { get; set; }
 
-        public float? Score { get; set; }
+        public float Score { get; set; }
     }
 }
