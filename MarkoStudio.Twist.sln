@@ -3,19 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist", "MarkoStudio.Twist\MarkoStudio.Twist.csproj", "{D592934A-BD48-4DE4-B535-65C8559267F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist", "src\MarkoStudio.Twist\MarkoStudio.Twist.csproj", "{D592934A-BD48-4DE4-B535-65C8559267F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.TwitterClient", "MarkoStudio.Twist.TwitterClient\MarkoStudio.Twist.TwitterClient.csproj", "{601858BE-669B-419B-AD9C-B1A614A802B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.TwitterClient", "src\MarkoStudio.Twist.TwitterClient\MarkoStudio.Twist.TwitterClient.csproj", "{601858BE-669B-419B-AD9C-B1A614A802B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Common", "MarkoStudio.Twist.Common\MarkoStudio.Twist.Common.csproj", "{6F3A8447-141F-4263-B3B5-89F469810E19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Common", "src\MarkoStudio.Twist.Common\MarkoStudio.Twist.Common.csproj", "{6F3A8447-141F-4263-B3B5-89F469810E19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.SentimentAnalysis", "MarkoStudio.Twist.SentimentAnalysis\MarkoStudio.Twist.SentimentAnalysis.csproj", "{1CCD7517-81ED-4691-ABAA-F5F71834FA19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.SentimentAnalysis", "src\MarkoStudio.Twist.SentimentAnalysis\MarkoStudio.Twist.SentimentAnalysis.csproj", "{1CCD7517-81ED-4691-ABAA-F5F71834FA19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Generalization", "MarkoStudio.Twist.Generalization\MarkoStudio.Twist.Generalization.csproj", "{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Generalization", "src\MarkoStudio.Twist.Generalization\MarkoStudio.Twist.Generalization.csproj", "{82D21AA2-0454-4E31-9A7B-F83DFFD43F11}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Application", "MarkoStudio.Twist.Application\MarkoStudio.Twist.Application.csproj", "{2A66812F-164E-488A-AD36-6C5076EEB679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Application", "src\MarkoStudio.Twist.Application\MarkoStudio.Twist.Application.csproj", "{2A66812F-164E-488A-AD36-6C5076EEB679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkoStudio.Twist.Client", "MarkoStudio.Twist.Client\MarkoStudio.Twist.Client.csproj", "{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkoStudio.Twist.Client", "src\MarkoStudio.Twist.Client\MarkoStudio.Twist.Client.csproj", "{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31950945-D83B-4E99-89B9-6F27AF35363E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{57721A85-E6FC-45B0-A5A0-96733067C957}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkoStudio.Twist.Tests", "test\MarkoStudio.Twist.Tests\MarkoStudio.Twist.Tests.csproj", "{5705DF2E-DDF5-4205-B5D5-7A4BF3D213E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +57,23 @@ Global
 		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5705DF2E-DDF5-4205-B5D5-7A4BF3D213E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5705DF2E-DDF5-4205-B5D5-7A4BF3D213E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5705DF2E-DDF5-4205-B5D5-7A4BF3D213E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5705DF2E-DDF5-4205-B5D5-7A4BF3D213E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D592934A-BD48-4DE4-B535-65C8559267F2} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{601858BE-669B-419B-AD9C-B1A614A802B3} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{6F3A8447-141F-4263-B3B5-89F469810E19} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{1CCD7517-81ED-4691-ABAA-F5F71834FA19} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{82D21AA2-0454-4E31-9A7B-F83DFFD43F11} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{2A66812F-164E-488A-AD36-6C5076EEB679} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{A29D0EA3-631B-4483-9FBB-6ED76D6F5C87} = {31950945-D83B-4E99-89B9-6F27AF35363E}
+		{5705DF2E-DDF5-4205-B5D5-7A4BF3D213E5} = {57721A85-E6FC-45B0-A5A0-96733067C957}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E99116E2-4DFA-4A30-B103-91B5F84389BE}
