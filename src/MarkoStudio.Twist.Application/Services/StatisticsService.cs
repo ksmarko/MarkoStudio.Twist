@@ -3,6 +3,7 @@ using MarkoStudio.Twist.Generalization;
 using MarkoStudio.Twist.SentimentAnalysis;
 using MarkoStudio.Twist.SentimentAnalysis.Models;
 using MarkoStudio.Twist.TwitterClient;
+using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,19 +15,28 @@ namespace MarkoStudio.Twist.Application.Services
         private readonly ITwitterAdapter _twitterAdapter;
         private readonly IGeneralizationService _generalizationService;
         private readonly ISentimentService _sentimentService;
+        private readonly IMemoryCache _cache;
 
         public StatisticsService(
             ITwitterAdapter twitterAdapter,
             IGeneralizationService generalizationService,
-            ISentimentService sentimentService)
+            ISentimentService sentimentService,
+            IMemoryCache cache)
         {
             _twitterAdapter = twitterAdapter;
             _generalizationService = generalizationService;
             _sentimentService = sentimentService;
+            _cache = cache;
         }
 
         public async Task<ProfileStatistics> GetProfileStatistics(string userName)
         {
+            var cacheKey = userName;
+            _cache.TryGetValue(cacheKey, out ProfileStatistics existing);
+
+            if (existing != null)
+                return existing;
+
             var entities = await _twitterAdapter.GetAllTweets(userName);
             var tweets = entities.Select(x => x.Text).ToList();
 
@@ -62,12 +72,16 @@ namespace MarkoStudio.Twist.Application.Services
 
             var profileSentiment = GetProfileSentiment(responseRecords.Select(x => x.SentimentScore));
 
-            return new ProfileStatistics
+            var response = new ProfileStatistics
             {
                 SentimentScore = profileSentiment,
                 ToxicityScore = profileToxicity,
                 Records = responseRecords
             };
+
+            _cache.Set(cacheKey, response);
+
+            return response;
         }
 
         private static SentimentScore GetProfileSentiment(IEnumerable<SentimentScore> records)

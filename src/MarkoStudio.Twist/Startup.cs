@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -66,6 +67,8 @@ namespace MarkoStudio.Twist
             // ========================== Configure application here ==================================================
 
             services.AddApplicationServices(_configuration);
+
+            services.AddMemoryCache(x => x.ExpirationScanFrequency = TimeSpan.FromDays(1));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
