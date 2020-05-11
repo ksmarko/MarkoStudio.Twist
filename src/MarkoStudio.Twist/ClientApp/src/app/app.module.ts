@@ -14,6 +14,8 @@ import { ChartsModule } from 'ng2-charts';
 import { ProfileSearchComponent } from './profile-search/profile-search.component';
 import { ProfileSearchService } from './services/profile-search-service';
 import { ProfileSentimentPieChartComponent } from './profile-sentiment-pie-chart/profile-sentiment-pie-chart.component';
+import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
+import { TweetsDetailsComponent } from './tweets-details/tweets-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProfileSentimentPieChartComponent } from './profile-sentiment-pie-chart
     NavMenuComponent,
     HomeComponent,
     ProfileSearchComponent,
-    ProfileSentimentPieChartComponent
+    ProfileSentimentPieChartComponent,
+    ProfileSummaryComponent,
+    TweetsDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,41 +1,29 @@
-<app-profile-search (userChange)="updateSearchedRecipient($event)"></app-profile-search>
-
-<p *ngIf="!profileStatistics"><em>Loading...</em></p>
-
-<div *ngIf="profileStatistics">
-
+<div>
   <div>
-    <label>Profile sentiment: {{profileStatistics.sentimentScore.label}}</label>
-    <br>
-    <label>Profile toxicity: {{profileStatistics.toxicityScore.label}}</label>
+    <app-profile-search 
+      (userChange)="updateSearchedRecipient($event)">
+    </app-profile-search>
   </div>
-
-  <div>
-    <app-profile-sentiment-pie-chart 
-      [profileSentiment]="profileStatistics.sentimentScore">
-    </app-profile-sentiment-pie-chart>
+    
+  <div *ngIf="profileStatistics">
+  
+    <div>
+      <app-profile-summary 
+        [profileStatistics]="profileStatistics">
+      </app-profile-summary>
+    </div>
+  
+    <div>
+      <app-profile-sentiment-pie-chart 
+        [profileSentiment]="profileStatistics.sentimentScore">
+      </app-profile-sentiment-pie-chart>
+    </div>
+  
+    <div>
+      <app-tweets-details 
+        [records]="profileStatistics.records">
+      </app-tweets-details>
+    </div>
+  
   </div>
-
-  <br>
-
-  <table class='table table-striped' aria-labelledby="tableLabel">
-    <thead>
-      <tr>
-        <th>Tweet</th>
-        <th>Sentiment score</th>
-        <th>Toxicity score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of profileStatistics.records">
-        <td>{{ record.text }}</td>
-        <td>
-          
-
-          {{ record.sentimentScore.label }}
-        </td>
-        <td>{{ record.toxicityScore.label }}</td>
-      </tr>
-    </tbody>
-  </table>
 </div>
