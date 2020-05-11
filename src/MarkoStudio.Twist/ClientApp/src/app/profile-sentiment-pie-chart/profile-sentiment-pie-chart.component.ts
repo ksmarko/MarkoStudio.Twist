@@ -5,7 +5,7 @@ import { Color } from 'ng2-charts';
 @Component({
   selector: 'app-profile-sentiment-pie-chart',
   templateUrl: './profile-sentiment-pie-chart.component.html',
-  styleUrls: ['./profile-sentiment-pie-chart.component.css']
+  styleUrls: ['./profile-sentiment-pie-chart.component.scss']
 })
 export class ProfileSentimentPieChartComponent implements OnChanges {
 

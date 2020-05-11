@@ -4,7 +4,7 @@ import { ProfileStatistics } from '../models/profile-statistics.model';
 @Component({
   selector: 'app-profile-summary',
   templateUrl: './profile-summary.component.html',
-  styleUrls: ['./profile-summary.component.css']
+  styleUrls: ['./profile-summary.component.scss']
 })
 export class ProfileSummaryComponent implements OnInit {
 

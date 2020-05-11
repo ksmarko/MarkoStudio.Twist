@@ -6,14 +6,14 @@ import { ProfileStatistics } from '../models/profile-statistics.model';
 @Component({
   selector: 'app-profile-search',
   templateUrl: './profile-search.component.html',
-  styleUrls: ['./profile-search.component.css']
+  styleUrls: ['./profile-search.component.scss']
 })
 export class ProfileSearchComponent implements OnInit {
 
   @Output('userChange') userChangeEmitter: EventEmitter<ProfileStatistics> = new EventEmitter<ProfileStatistics>();
 
-  private emailControl: AbstractControl;
-  public myGroup: FormGroup;
+  private userNameControl: AbstractControl;
+  public searchProfile: FormGroup;
 
   public errorMessage: string;
 
@@ -23,16 +23,16 @@ export class ProfileSearchComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.myGroup = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.pattern('')]]
+    this.searchProfile = this.formBuilder.group({
+      userName: [null, [Validators.required, Validators.pattern('')]]
     });
 
-    this.emailControl = this.myGroup.get('email');
+    this.userNameControl = this.searchProfile.get('userName');
   }
 
   public getProfileStatistics(): void {
 
-    let userName = this.emailControl.value;
+    let userName = this.userNameControl.value;
 
     this.profileSearchService.searchProfile(userName).subscribe(result => {
 
