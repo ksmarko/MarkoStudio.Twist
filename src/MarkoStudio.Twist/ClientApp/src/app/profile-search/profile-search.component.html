@@ -1,0 +1,22 @@
+<div class="c-col-md-10 c-col-lg-12 c-col-xl-9">
+    <div [formGroup]="myGroup" class="c-input-group">
+      <div class="c-input-container">
+        <input id="recipient-search-email"
+               formControlName="email"
+               class="c-input"
+               [autofocus]
+               (keyup.enter)="getProfileStatistics()">
+      </div>
+  
+      <button class="c-input-addon c-btn-input c-btn-primary recipient-form__search-button"
+              (click)="getProfileStatistics()">
+        Search
+      </button>
+    </div>
+    <div class="c-p-bottom-md" *ngIf="errorMessage">
+      <div class="user-details-modal__contact-info-alert c-alert c-alert-danger c-text-center">
+        <i class="fa fa-exclamation-circle c-m-right-sm"></i>
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>

@@ -1,5 +1,4 @@
-
-<button (click)="getProfileStatistics('realDonaldTrump')">Get statistics</button>
+<app-profile-search (userChange)="updateSearchedRecipient($event)"></app-profile-search>
 
 <p *ngIf="!profileStatistics"><em>Loading...</em></p>
 
@@ -10,6 +9,14 @@
     <br>
     <label>Profile toxicity: {{profileStatistics.toxicityScore.label}}</label>
   </div>
+
+  <div>
+    <app-profile-sentiment-pie-chart 
+      [profileSentiment]="profileStatistics.sentimentScore">
+    </app-profile-sentiment-pie-chart>
+  </div>
+
+  <br>
 
   <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
