@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <label>Profile sentiment: {{profileStatistics.profileSentimentLabel}}</label>
+        <br>
+        <label>Profile toxicity: {{profileStatistics.profileToxicityLabel}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col col-md-6">
+      <app-profile-sentiment-pie-chart 
+        [profileSentiment]="getSentimentChartData()">
+      </app-profile-sentiment-pie-chart>
+    </div>
+    <div class="col col-md-6">
+      <app-profile-toxicity-pie-chart
+      [profileToxicity]="getToxicityChartData()">
+    </app-profile-toxicity-pie-chart>
+    </div>
+  </div>
+</div>

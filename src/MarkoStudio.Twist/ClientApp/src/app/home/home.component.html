@@ -1,34 +1,20 @@
-
-<button (click)="getProfileStatistics('realDonaldTrump')">Get statistics</button>
-
-<p *ngIf="!profileStatistics"><em>Loading...</em></p>
-
-<div *ngIf="profileStatistics">
-
-  <div>
-    <label>Profile sentiment: {{profileStatistics.sentimentScore.label}}</label>
-    <br>
-    <label>Profile toxicity: {{profileStatistics.toxicityScore.label}}</label>
+<div class="row">
+  <div class="col">
+    <app-profile-search 
+      (userChange)="updateSearchedRecipient($event)">
+    </app-profile-search>
   </div>
+    
+  <div *ngIf="profileStatistics">
+    <app-profile-summary 
+      [profileStatistics]="profileStatistics">
+    </app-profile-summary>
 
-  <table class='table table-striped' aria-labelledby="tableLabel">
-    <thead>
-      <tr>
-        <th>Tweet</th>
-        <th>Sentiment score</th>
-        <th>Toxicity score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of profileStatistics.records">
-        <td>{{ record.text }}</td>
-        <td>
-          
-
-          {{ record.sentimentScore.label }}
-        </td>
-        <td>{{ record.toxicityScore.label }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="mt-5">
+      <app-tweets-details 
+        [records]="profileStatistics.records">
+      </app-tweets-details>
+    </div>
+  
+  </div>
 </div>

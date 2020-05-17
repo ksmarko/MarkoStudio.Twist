@@ -1,0 +1,27 @@
+<div>
+        <div class="input-group" [formGroup]="searchProfile">
+          <div class="input-group-prepend">
+            <span class="input-group-text">@</span>
+          </div>
+          <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Username"
+          id="profile-search"
+          formControlName="userName"
+          class="c-input mr-sm-2"
+          [autofocus]
+          (keyup.enter)="getProfileStatistics()">
+          <button 
+            class="btn c-btn-input my-2 my-sm-0" 
+            (click)="getProfileStatistics()">Search</button>
+        </div>
+
+    <br>
+
+    <div *ngIf="errorMessage">
+      <div class="alert alert-danger text-center">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
