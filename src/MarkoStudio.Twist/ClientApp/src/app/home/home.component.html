@@ -1,25 +1,16 @@
-<div>
-  <div>
+<div class="row">
+  <div class="col">
     <app-profile-search 
       (userChange)="updateSearchedRecipient($event)">
     </app-profile-search>
   </div>
     
   <div *ngIf="profileStatistics">
-  
-    <div>
-      <app-profile-summary 
-        [profileStatistics]="profileStatistics">
-      </app-profile-summary>
-    </div>
-  
-    <div>
-      <app-profile-sentiment-pie-chart 
-        [profileSentiment]="profileStatistics.sentimentScore">
-      </app-profile-sentiment-pie-chart>
-    </div>
-  
-    <div>
+    <app-profile-summary 
+      [profileStatistics]="profileStatistics">
+    </app-profile-summary>
+
+    <div class="mt-5">
       <app-tweets-details 
         [records]="profileStatistics.records">
       </app-tweets-details>

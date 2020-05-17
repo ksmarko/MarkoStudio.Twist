@@ -61,21 +61,23 @@ namespace MarkoStudio.Twist.Application.Services
                 Text = x.Origin,
                 SentimentScore = new SentimentScore
                 {
-                    Score = positiveSentiment[x.OriginId].SentimentScore,
+                    Score = positiveSentiment[x.OriginId].SentimentScore.ToDictionary(t => t.Key, t => t.Value),
                     Label = positiveSentiment[x.OriginId].SentimentType
                 },
-                ToxicityScore = new ToxicityScore(toxicSentiment[x.OriginId].Score)
+                ToxicityScore = new ToxicityScore
+                {
+                    Value = toxicSentiment[x.OriginId].Score,
+                    Label = toxicSentiment[x.OriginId].Score >= 0.5? "Toxic" : "Non-toxic"
+                }
             }).ToList();
 
-            var avgProfileToxicity = responseRecords.Select(x => x.ToxicityScore.Value).Average();
-            var profileToxicity = new ToxicityScore(avgProfileToxicity);
-
-            var profileSentiment = GetProfileSentiment(responseRecords.Select(x => x.SentimentScore));
+            var profileSentiment = GetProfileSentimentLabel(responseRecords.Select(x => x.SentimentScore));
+            var profileToxicity = GetProfileToxicityLabel(responseRecords.Select(x => x.ToxicityScore));
 
             var response = new ProfileStatistics
             {
-                SentimentScore = profileSentiment,
-                ToxicityScore = profileToxicity,
+                ProfileSentimentLabel = profileSentiment,
+                ProfileToxicityLabel = profileToxicity,
                 Records = responseRecords
             };
 
@@ -84,30 +86,22 @@ namespace MarkoStudio.Twist.Application.Services
             return response;
         }
 
-        private static SentimentScore GetProfileSentiment(IEnumerable<SentimentScore> records)
+        private static string GetProfileSentimentLabel(IEnumerable<SentimentScore> records)
         {
-            var label = records
+            return records
                 .GroupBy(p => p.Label)
-                .Select(g => new {Label = g.Key, Count = g.Count()})
+                .Select(g => new { Label = g.Key, Count = g.Count() })
                 .OrderByDescending(x => x.Count)
                 .First().Label;
+        }
 
-            var dictionaries = records.Select(x => x.Score);
-
-            var positive = dictionaries.Select(x => x[KnownSentiment.Positive]).Average();
-            var negative = dictionaries.Select(x => x[KnownSentiment.Negative]).Average();
-            var neutral = dictionaries.Select(x => x[KnownSentiment.Neutral]).Average();
-
-            return new SentimentScore
-            {
-                Label = label,
-                Score = new Dictionary<string, double>
-                {
-                    {KnownSentiment.Positive, positive},
-                    {KnownSentiment.Negative, negative},
-                    {KnownSentiment.Neutral, neutral}
-                }
-            };
+        private static string GetProfileToxicityLabel(IEnumerable<ToxicityScore> records)
+        {
+            return records
+                .GroupBy(p => p.Label)
+                .Select(g => new { Label = g.Key, Count = g.Count() })
+                .OrderByDescending(x => x.Count)
+                .First().Label;
         }
     }
 }

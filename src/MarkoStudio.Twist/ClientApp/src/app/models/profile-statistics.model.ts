@@ -1,7 +1,13 @@
   export class ProfileStatistics {
+    profileSentimentLabel: string;
+    profileToxicityLabel: string;
+    records: Statistics[];
+  }
+
+  export class Statistics {
+    text: string;
     sentimentScore: SentimentScore;
     toxicityScore: ToxicityScore;
-    records: Statistics[];
   }
   
   export class SentimentScore {
@@ -10,12 +16,6 @@
   }
   
   export class ToxicityScore {
-    score: number;
+    value: number;
     label: string;
-  }
-  
-  export class Statistics {
-    text: string;
-    sentimentScore: SentimentScore;
-    toxicityScore: ToxicityScore;
-  }
+  } 

@@ -12,10 +12,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 import { ProfileSearchComponent } from './profile-search/profile-search.component';
-import { ProfileSearchService } from './services/profile-search-service';
+import { ProfileSearchService } from './services/profile-search.service';
 import { ProfileSentimentPieChartComponent } from './profile-sentiment-pie-chart/profile-sentiment-pie-chart.component';
 import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
 import { TweetsDetailsComponent } from './tweets-details/tweets-details.component';
+import { ProfileToxicityPieChartComponent } from './profile-toxicity-pie-chart/profile-toxicity-pie-chart.component';
+import { ProfileAggregateService } from './services/profile-statistics-aggregate.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { TweetsDetailsComponent } from './tweets-details/tweets-details.componen
     ProfileSearchComponent,
     ProfileSentimentPieChartComponent,
     ProfileSummaryComponent,
-    TweetsDetailsComponent
+    TweetsDetailsComponent,
+    ProfileToxicityPieChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +40,7 @@ import { TweetsDetailsComponent } from './tweets-details/tweets-details.componen
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ])
   ],
-  providers: [ProfileSearchService],
+  providers: [ProfileSearchService, ProfileAggregateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

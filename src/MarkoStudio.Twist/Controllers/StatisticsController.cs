@@ -21,13 +21,16 @@ namespace MarkoStudio.Twist.Controllers
         [HttpGet("profile")]
         public async Task<ActionResult<ProfileStatisticsResponse>> GetProfileStatistics([FromQuery] string userName)
         {
-            var record = await _service.GetProfileStatistics(userName);
+            if (string.IsNullOrEmpty(userName.Trim()))
+                return BadRequest();
+
+            var profile = await _service.GetProfileStatistics(userName);
 
             return new ProfileStatisticsResponse
             {
-                SentimentScore = Map(record.SentimentScore),
-                ToxicityScore = Map(record.ToxicityScore),
-                Records = record.Records.Select(x => new StatisticsResponse
+                ProfileSentimentLabel = profile.ProfileSentimentLabel,
+                ProfileToxicityLabel = profile.ProfileToxicityLabel,
+                Records = profile.Records.Select(x => new StatisticsResponse
                 {
                     Text = x.Text,
                     SentimentScore = Map(x.SentimentScore),
@@ -41,7 +44,7 @@ namespace MarkoStudio.Twist.Controllers
             return new SentimentScoreResponse
             {
                 Label = score.Label,
-                Score = score.Score
+                Score = score.Score?.ToDictionary(x => x.Key, x => x.Value)
             };
         }
 
@@ -50,7 +53,7 @@ namespace MarkoStudio.Twist.Controllers
             return new ToxicityScoreResponse
             {
                 Label = score.Label,
-                Score = score.Value
+                Value = score.Value
             };
         }
     }

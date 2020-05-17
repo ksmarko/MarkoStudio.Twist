@@ -1,16 +1,18 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { Color } from 'ng2-charts';
 import { ChartOptions } from 'chart.js';
-import { ProfileSentimentAggregate } from '../models/aggregate.model';
+import { ProfileToxicityAggregate } from '../models/aggregate.model';
 
 @Component({
-  selector: 'app-profile-sentiment-pie-chart',
-  templateUrl: './profile-sentiment-pie-chart.component.html',
-  styleUrls: ['./profile-sentiment-pie-chart.component.scss']
+  selector: 'app-profile-toxicity-pie-chart',
+  templateUrl: './profile-toxicity-pie-chart.component.html',
+  styleUrls: ['./profile-toxicity-pie-chart.component.scss']
 })
-export class ProfileSentimentPieChartComponent implements OnChanges {
+export class ProfileToxicityPieChartComponent implements OnChanges {
 
-  @Input() profileSentiment: ProfileSentimentAggregate;
+  @Input() profileToxicity: ProfileToxicityAggregate;
+
+  public sentimentChart = [];
 
   public chartLabels: string[];
   public chartData: number[];
@@ -19,12 +21,12 @@ export class ProfileSentimentPieChartComponent implements OnChanges {
   public chartOptions: ChartOptions = {
     title: {
       display: true,
-      text: 'Profile sentiment chart',
+      text: 'Profile toxicity chart',
       position: 'bottom'
     },
     legend: {
       display: true,
-      position: 'bottom'
+      position: "bottom"
     },
     maintainAspectRatio: false
   };
@@ -42,16 +44,13 @@ export class ProfileSentimentPieChartComponent implements OnChanges {
   }
 
   private updateChartData(): void {
-    this.chartLabels = ['Positive', 'Negative', 'Neutral', 'Mixed'];
-    this.chartData = [
-      this.profileSentiment.positive, 
-      this.profileSentiment.negative, 
-      this.profileSentiment.neutral, 
-      this.profileSentiment.mixed];
+    this.chartLabels = ['Non-toxic', 'Toxic'];
+    this.chartData = [this.profileToxicity.nonToxic, this.profileToxicity.toxic];
 
-    let hoverColors = ["#4BC0C0", "#FF6384", "#FFCD56", "#d8d8d8"];
-    let mainColors = ["#93d9d9", "#ffa1b5", "#ffe29a", "#e5e5e5"];
+    let hoverColors = ["#4BC0C0", "#FF6384"];
+    let mainColors = ["#93d9d9", "#ffa1b5"];
 
     this.chartColors = [{ backgroundColor: mainColors, hoverBackgroundColor: hoverColors }];
   }
 }
+
