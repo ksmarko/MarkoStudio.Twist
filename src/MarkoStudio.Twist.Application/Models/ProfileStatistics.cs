@@ -20,17 +20,22 @@ namespace MarkoStudio.Twist.Application.Models
         public ToxicityScore ToxicityScore { get; set; }
     }
 
-    public class SentimentScore
+    public class SentimentScore : ILabelled
     {
         public Dictionary<string, double> Score { get; set; }
 
         public string Label { get; set; }
     }
 
-    public class ToxicityScore
+    public class ToxicityScore : ILabelled
     {
         public double Value { get; set; }
 
         public string Label { get; set; }
+    }
+
+    public interface ILabelled
+    {
+        string Label { get; set; }
     }
 }

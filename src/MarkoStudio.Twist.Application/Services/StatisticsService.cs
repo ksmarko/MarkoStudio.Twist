@@ -71,8 +71,8 @@ namespace MarkoStudio.Twist.Application.Services
                 }
             }).ToList();
 
-            var profileSentiment = GetProfileSentimentLabel(responseRecords.Select(x => x.SentimentScore));
-            var profileToxicity = GetProfileToxicityLabel(responseRecords.Select(x => x.ToxicityScore));
+            var profileSentiment = GetProfileLabel(responseRecords.Select(x => x.SentimentScore));
+            var profileToxicity = GetProfileLabel(responseRecords.Select(x => x.ToxicityScore));
 
             var response = new ProfileStatistics
             {
@@ -86,16 +86,7 @@ namespace MarkoStudio.Twist.Application.Services
             return response;
         }
 
-        private static string GetProfileSentimentLabel(IEnumerable<SentimentScore> records)
-        {
-            return records
-                .GroupBy(p => p.Label)
-                .Select(g => new { Label = g.Key, Count = g.Count() })
-                .OrderByDescending(x => x.Count)
-                .First().Label;
-        }
-
-        private static string GetProfileToxicityLabel(IEnumerable<ToxicityScore> records)
+        private static string GetProfileLabel(IEnumerable<ILabelled> records)
         {
             return records
                 .GroupBy(p => p.Label)
