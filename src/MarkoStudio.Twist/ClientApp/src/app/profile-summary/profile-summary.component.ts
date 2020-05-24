@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProfileStatistics, TopWordListItem } from '../models/profile-statistics.model';
 import { ProfileAggregateService } from '../services/profile-statistics-aggregate.service';
 import { ProfileToxicityAggregate, ProfileSentimentAggregate } from '../models/aggregate.model';
+import { SentimentMap, ToxicityMap } from '../models/known.enum';
 
 @Component({
   selector: 'app-profile-summary',
@@ -18,6 +19,8 @@ export class ProfileSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.profileStatistics.profileSentimentLabel = SentimentMap[this.profileStatistics.profileSentimentLabel];
+    this.profileStatistics.profileToxicityLabel = ToxicityMap[this.profileStatistics.profileToxicityLabel];
   }
 
   public getToxicityChartData(): ProfileToxicityAggregate {

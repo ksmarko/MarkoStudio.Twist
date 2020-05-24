@@ -21,7 +21,7 @@ export class ProfileToxicityPieChartComponent implements OnChanges {
   public chartOptions: ChartOptions = {
     title: {
       display: true,
-      text: 'Profile toxicity chart',
+      text: 'Токсичність профілю',
       position: 'bottom'
     },
     legend: {
@@ -38,7 +38,7 @@ export class ProfileToxicityPieChartComponent implements OnChanges {
   }
 
   private updateChartData(): void {
-    this.chartLabels = ['Non-toxic', 'Toxic'];
+    this.chartLabels = ['Нетоксичний', 'Токсичний'];
     this.chartData = [this.profileToxicity.nonToxic, this.profileToxicity.toxic];
 
     let hoverColors = ["#4BC0C0", "#FF6384"];

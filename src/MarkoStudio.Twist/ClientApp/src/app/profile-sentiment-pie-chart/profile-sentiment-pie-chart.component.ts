@@ -19,7 +19,7 @@ export class ProfileSentimentPieChartComponent implements OnChanges {
   public chartOptions: ChartOptions = {
     title: {
       display: true,
-      text: 'Profile sentiment chart',
+      text: 'Позитивність профілю',
       position: 'bottom'
     },
     legend: {
@@ -35,7 +35,7 @@ export class ProfileSentimentPieChartComponent implements OnChanges {
   }
 
   private updateChartData(): void {
-    this.chartLabels = ['Positive', 'Negative', 'Neutral', 'Mixed'];
+    this.chartLabels = ['Позитивний', 'Негативний', 'Нейтральний', 'Змішаний'];
     this.chartData = [
       this.profileSentiment.positive, 
       this.profileSentiment.negative, 
