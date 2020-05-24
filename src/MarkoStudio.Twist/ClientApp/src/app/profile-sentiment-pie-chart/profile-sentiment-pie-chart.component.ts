@@ -28,17 +28,10 @@ export class ProfileSentimentPieChartComponent implements OnChanges {
     },
     maintainAspectRatio: false
   };
-
-  private chartUpdated: boolean = false;
-
-  constructor() {
-  }
-
+  
   public ngOnChanges(changes: SimpleChanges): void {
-    if (!this.chartUpdated){
+    if (JSON.stringify(changes.profileSentiment.currentValue) !== JSON.stringify(changes.profileSentiment.previousValue))
       this.updateChartData();
-      this.chartUpdated = true;
-    }
   }
 
   private updateChartData(): void {

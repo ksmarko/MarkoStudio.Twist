@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TopWordListItem } from '../models/profile-statistics.model';
 
 @Component({
   selector: 'app-top-words-list',
@@ -8,9 +9,4 @@ import { Component, Input } from '@angular/core';
 export class TopWordsListComponent {
 
   @Input() profileTopWords: TopWordListItem[];
-}
-
-export class TopWordListItem {
-  text: string;
-  value: number;
 }

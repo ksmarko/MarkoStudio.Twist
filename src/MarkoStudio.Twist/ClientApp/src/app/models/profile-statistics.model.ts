@@ -2,6 +2,7 @@
     profileSentimentLabel: string;
     profileToxicityLabel: string;
     records: Statistics[];
+    topWords: TopWordListItem[];
   }
 
   export class Statistics {
@@ -19,3 +20,8 @@
     value: number;
     label: string;
   } 
+
+  export class TopWordListItem {
+    text: string;
+    count: number;
+  }

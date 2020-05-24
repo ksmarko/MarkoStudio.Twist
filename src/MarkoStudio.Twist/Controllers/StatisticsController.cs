@@ -30,11 +30,16 @@ namespace MarkoStudio.Twist.Controllers
             {
                 ProfileSentimentLabel = profile.ProfileSentimentLabel,
                 ProfileToxicityLabel = profile.ProfileToxicityLabel,
-                Records = profile.Records.Select(x => new StatisticsResponse
+                Records = profile.Records?.Select(x => new StatisticsResponse
                 {
                     Text = x.Text,
                     SentimentScore = Map(x.SentimentScore),
                     ToxicityScore = Map(x.ToxicityScore)
+                }).ToList(),
+                TopWords = profile.TopWords?.Select(x => new TopWordItemResponse
+                {
+                    Text = x.Key,
+                    Count = x.Value
                 }).ToList()
             };
         }

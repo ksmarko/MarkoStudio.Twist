@@ -9,6 +9,8 @@ namespace MarkoStudio.Twist.Client.Models
         public string ProfileToxicityLabel { get; set; }
 
         public List<StatisticsResponse> Records { get; set; }
+
+        public List<TopWordItemResponse> TopWords { get; set; }
     }
 
     public class StatisticsResponse
@@ -32,5 +34,12 @@ namespace MarkoStudio.Twist.Client.Models
         public double Value { get; set; }
 
         public string Label { get; set; }
+    }    
+    
+    public class TopWordItemResponse
+    {
+        public string Text { get; set; }
+
+        public int Count { get; set; }
     }
 }

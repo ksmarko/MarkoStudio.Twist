@@ -31,15 +31,9 @@ export class ProfileToxicityPieChartComponent implements OnChanges {
     maintainAspectRatio: false
   };
 
-  private chartUpdated: boolean = false;
-
-  constructor() {
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
-    if (!this.chartUpdated){
+    if (JSON.stringify(changes.profileToxicity.currentValue) !== JSON.stringify(changes.profileToxicity.previousValue)) {
       this.updateChartData();
-      this.chartUpdated = true;
     }
   }
 

@@ -29,7 +29,7 @@ export class ProfileSearchComponent implements OnInit {
 
     this.userNameControl = this.searchProfile.get('userName');
 
-    this.userNameControl.setValue('realDonaldTrump');
+    this.userNameControl.setValue('lady_arcsin');
     this.getProfileStatistics();
   }
 

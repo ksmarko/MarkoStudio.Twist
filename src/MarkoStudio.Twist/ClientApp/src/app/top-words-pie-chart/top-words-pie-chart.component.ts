@@ -1,7 +1,7 @@
 import { Component, SimpleChanges, OnChanges, Input } from '@angular/core';
 import { ChartOptions } from 'chart.js';
-import { TopWordListItem } from '../top-words-list/top-words-list.component';
 import { Color } from 'ng2-charts';
+import { TopWordListItem } from '../models/profile-statistics.model';
 
 @Component({
   selector: 'app-top-words-pie-chart',
@@ -26,18 +26,15 @@ export class TopWordsPieChartComponent implements OnChanges {
     maintainAspectRatio: false
   };
 
-  private chartUpdated: boolean = false;
-
   public ngOnChanges(changes: SimpleChanges): void {
-    if (!this.chartUpdated){
+    if (JSON.stringify(changes.profileTopWords.currentValue) !== JSON.stringify(changes.profileTopWords.previousValue)) {
       this.updateChartData();
-      this.chartUpdated = true;
     }
   }
 
   private updateChartData(): void {
     this.chartLabels = this.profileTopWords.map(x => x.text);
-    this.chartData = this.profileTopWords.map(x => x.value);
+    this.chartData = this.profileTopWords.map(x => x.count);
 
     let mainColors = [
       "#143939",

@@ -9,6 +9,8 @@ namespace MarkoStudio.Twist.Application.Models
         public string ProfileToxicityLabel { get; set; }
 
         public List<Statistics> Records { get; set; }
+
+        public Dictionary<string, int> TopWords { get; set; }
     }
 
     public class Statistics
