@@ -1,0 +1,16 @@
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Word</th>
+            <th scope="col">Count</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of profileTopWords">
+          <tr>
+            <th scope="row">{{item.text}}</th>
+            <td>{{item.value}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -18,6 +18,8 @@ import { ProfileSummaryComponent } from './profile-summary/profile-summary.compo
 import { TweetsDetailsComponent } from './tweets-details/tweets-details.component';
 import { ProfileToxicityPieChartComponent } from './profile-toxicity-pie-chart/profile-toxicity-pie-chart.component';
 import { ProfileAggregateService } from './services/profile-statistics-aggregate.service';
+import { TopWordsListComponent } from './top-words-list/top-words-list.component';
+import { TopWordsPieChartComponent } from './top-words-pie-chart/top-words-pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProfileAggregateService } from './services/profile-statistics-aggregate
     ProfileSentimentPieChartComponent,
     ProfileSummaryComponent,
     TweetsDetailsComponent,
-    ProfileToxicityPieChartComponent
+    ProfileToxicityPieChartComponent,
+    TopWordsListComponent,
+    TopWordsPieChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -20,4 +20,23 @@
     </app-profile-toxicity-pie-chart>
     </div>
   </div>
+  <div class="row mt-5">
+    <div class="col col-md-4"></div>
+    <div class="col col-md-4 text-center top-profile-words-summary">
+      Top profile words
+    </div>
+    <div class="col col-md-4"></div>
+  </div>
+  <div class="row mt-5">
+    <div class="col col-md-6">
+      <app-top-words-pie-chart 
+        [profileTopWords]="getTopWordsData()">        
+      </app-top-words-pie-chart>
+    </div>
+    <div class="col col-md-6">
+      <app-top-words-list 
+      [profileTopWords]="getTopWordsData()">
+    </app-top-words-list>
+    </div>
+  </div>
 </div>
