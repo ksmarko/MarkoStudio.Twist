@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.IO.Compression;
 using MarkoStudio.Twist.Application;
+using MarkoStudio.Twist.Common.Middlewares;
 
 namespace MarkoStudio.Twist
 {
@@ -90,6 +91,8 @@ namespace MarkoStudio.Twist
             {
                 app.UseSpaStaticFiles();
             }
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseRouting();
 

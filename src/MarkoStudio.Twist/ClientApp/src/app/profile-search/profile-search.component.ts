@@ -53,12 +53,18 @@ export class ProfileSearchComponent implements OnInit {
       localStorage.setItem(userName, JSON.stringify(result));
 
       this.errorMessage = null;
-      console.log(result);
+
       console.log(`From real services: ${result}`);
+      
       this.userChangeEmitter.emit(result);
     }, error => {
-      console.error(error);
-      this.errorMessage = error.error.message;
+
+      if (error.status == 404)
+        this.errorMessage = 'Сторінка не знайдена';
+
+      if (error.status == 400 || error.status == 500)
+        this.errorMessage = 'Щось пішло не так. Спробуйте пізніше';
+
       this.userChangeEmitter.emit(null);
     });
   }
