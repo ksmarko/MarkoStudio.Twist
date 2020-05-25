@@ -44,9 +44,6 @@ namespace MarkoStudio.Twist.Common.Http
 
             var code = (int) responseMessage.StatusCode;
 
-            if (code == 404 && responseMessage.RequestMessage.Method == HttpMethod.Get)
-                return;
-
             if (code == 404)
                 throw new NotFoundException(responseBody);
 
