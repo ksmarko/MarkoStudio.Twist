@@ -3,7 +3,6 @@ using MarkoStudio.Twist.Generalization;
 using MarkoStudio.Twist.SentimentAnalysis;
 using MarkoStudio.Twist.SentimentAnalysis.Models;
 using MarkoStudio.Twist.TwitterClient;
-using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -16,28 +15,19 @@ namespace MarkoStudio.Twist.Application.Services
         private readonly ITwitterAdapter _twitterAdapter;
         private readonly IGeneralizationService _generalizationService;
         private readonly ISentimentService _sentimentService;
-        private readonly IMemoryCache _cache;
 
         public StatisticsService(
             ITwitterAdapter twitterAdapter,
             IGeneralizationService generalizationService,
-            ISentimentService sentimentService,
-            IMemoryCache cache)
+            ISentimentService sentimentService)
         {
             _twitterAdapter = twitterAdapter;
             _generalizationService = generalizationService;
             _sentimentService = sentimentService;
-            _cache = cache;
         }
 
         public async Task<ProfileStatistics> GetProfileStatistics(string userName)
         {
-            var cacheKey = userName;
-            _cache.TryGetValue(cacheKey, out ProfileStatistics existing);
-
-            if (existing != null)
-                return existing;
-
             var entities = await _twitterAdapter.GetAllTweets(userName);
             var tweets = entities.Select(x => x.Text).ToList();
 
@@ -55,7 +45,6 @@ namespace MarkoStudio.Twist.Application.Services
             var toxicSentimentTask = _sentimentService.DetectToxicSentiments(textEntries);
 
             await Task.WhenAll(positiveSentimentTask, toxicSentimentTask, topWordsTask);
-            await Task.WhenAll(topWordsTask);
 
             var positiveSentiment = positiveSentimentTask.Result.ToDictionary(x => x.OriginId);
             var toxicSentiment = toxicSentimentTask.Result.ToDictionary(x => x.OriginId);
@@ -72,7 +61,7 @@ namespace MarkoStudio.Twist.Application.Services
                 ToxicityScore = new ToxicityScore
                 {
                     Value = toxicSentiment[x.OriginId].Score,
-                    Label = toxicSentiment[x.OriginId].Score >= 0.5 ? "Toxic" : "Non-toxic"
+                    Label = toxicSentiment[x.OriginId].Score >= 0.5 ? KnownSentiment.Toxic : KnownSentiment.NonToxic
                 }
             }).ToList();
 
@@ -86,8 +75,6 @@ namespace MarkoStudio.Twist.Application.Services
                 Records = responseRecords,
                 TopWords = topWords
             };
-
-            _cache.Set(cacheKey, response);
 
             return response;
         }
@@ -119,19 +106,19 @@ namespace MarkoStudio.Twist.Application.Services
             });
         }
 
-        private string[] GetWords(string text)
+        private static string[] GetWords(string text)
         {
             var result = new List<string>();
             var words = text.Split(' ', '\n');
 
-            string pattern = @"[^\w\d]";
+            var pattern = @"[^\w\d]";
 
             foreach(var word in words)
             {
                 if (word.StartsWith("#") || word.StartsWith("http://") || word.StartsWith("https://"))
                     continue;
 
-                var clear = Regex.Replace(word, pattern, "").Trim().ToLower();
+                var clear = Regex.Replace(word, pattern, string.Empty).Trim().ToLower();
 
                 result.Add(clear);
             }

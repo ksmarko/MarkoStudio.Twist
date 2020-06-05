@@ -24,37 +24,19 @@ export class ProfileSearchComponent implements OnInit {
 
   public ngOnInit(): void {
     this.searchProfile = this.formBuilder.group({
-      userName: [null, [Validators.required, Validators.pattern('[^\w]'), Validators.nullValidator]] // todo: fix
+      userName: [null, [Validators.required, Validators.pattern('[^\w]'), Validators.nullValidator]]
     });
 
     this.userNameControl = this.searchProfile.get('userName');
-
-    this.userNameControl.setValue('lady_arcsin');
-    this.getProfileStatistics();
   }
 
   public getProfileStatistics(): void {
 
     let userName = this.userNameControl.value;
 
-    var profile = localStorage.getItem(userName);
-
-    if (profile) {
-      var result = JSON.parse(profile);
-
-      this.errorMessage = null;
-      console.log(`From cache: ${result}`);
-      this.userChangeEmitter.emit(result);
-      return;
-    }
-
     this.profileSearchService.searchProfile(userName).subscribe(result => {
 
-      localStorage.setItem(userName, JSON.stringify(result));
-
       this.errorMessage = null;
-
-      console.log(`From real services: ${result}`);
       
       this.userChangeEmitter.emit(result);
     }, error => {

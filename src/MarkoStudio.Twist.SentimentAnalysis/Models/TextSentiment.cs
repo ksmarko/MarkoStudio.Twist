@@ -23,6 +23,6 @@ namespace MarkoStudio.Twist.SentimentAnalysis.Models
         public const string Neutral = "Neutral";
 
         public const string Toxic = "Toxic";
-        public const string NonToxic = "NonToxic";
+        public const string NonToxic = "Non-toxic";
     }
 }
