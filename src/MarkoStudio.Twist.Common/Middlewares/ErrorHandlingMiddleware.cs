@@ -31,8 +31,10 @@ namespace MarkoStudio.Twist.Common.Middlewares
         {
             var code = HttpStatusCode.InternalServerError;
 
-            if (ex is NotFoundException) code = HttpStatusCode.NotFound;
-            else if (ex is BadRequestException) code = HttpStatusCode.BadRequest;
+            if (ex is NotFoundException) 
+                code = HttpStatusCode.NotFound;
+            else if (ex is BadRequestException) 
+                code = HttpStatusCode.BadRequest;
 
             var result = JsonConvert.SerializeObject(new { error = ex.Message });
             context.Response.ContentType = "application/json";

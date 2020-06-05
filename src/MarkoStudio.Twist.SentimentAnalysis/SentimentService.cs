@@ -69,20 +69,4 @@ namespace MarkoStudio.Twist.SentimentAnalysis
             return resultList;
         }
     }
-
-    public static class SentimentScoreExtensions
-    {
-        public static Dictionary<string, double> GetScore(this SentimentScore sentimentScore)
-        {
-            var map = new Dictionary<string, double>
-            {
-                {KnownSentiment.Positive, sentimentScore.Positive},
-                {KnownSentiment.Negative, sentimentScore.Negative},
-                {KnownSentiment.Mixed, sentimentScore.Mixed},
-                {KnownSentiment.Neutral, sentimentScore.Neutral}
-            };
-
-            return map;
-        }
-    }
 }
