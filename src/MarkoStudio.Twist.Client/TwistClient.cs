@@ -2,19 +2,25 @@
 
 namespace MarkoStudio.Twist.Client
 {
+    /// <summary>
+    /// Represents API to access Twist application
+    /// </summary>
     public interface ITwistClient
     {
+        /// <summary>
+        /// API to get Twitter profile statistics
+        /// </summary>
         IStatisticsApi Statistics { get; }
     }
 
+    /// <inheritdoc/>
     public class TwistClient : ITwistClient
     {
+        /// <inheritdoc/>
         public IStatisticsApi Statistics { get; }
 
-        public TwistClient()
+        public TwistClient(HttpClient httpClient)
         {
-            var httpClient = new HttpClient();
-
             Statistics = new StatisticsApi(httpClient);
         }
     }

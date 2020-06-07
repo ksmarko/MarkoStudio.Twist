@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MarkoStudio.Twist.Controllers
 {
+    /// <summary>
+    /// API to get Twitter profile statistics
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class StatisticsController : ControllerBase
@@ -18,6 +21,11 @@ namespace MarkoStudio.Twist.Controllers
             _service = service;
         }
 
+        /// <summary>
+        /// Gets Twitter profile statistics
+        /// </summary>
+        /// <param name="userName">Twitter profile user name to get statistics for</param>
+        /// <returns>Profile statistics - general positivity and toxicity, positivity and toxicity per each tweet</returns>
         [HttpGet("profile")]
         public async Task<ActionResult<ProfileStatisticsResponse>> GetProfileStatistics([FromQuery] string userName)
         {
